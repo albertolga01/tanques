@@ -1,0 +1,79 @@
+<div class="container" style="min-width:900px">
+  
+    <div class="d-flex justify-content-between">
+      <h1>Edit venta</h1>
+      <a href="#" routerLink="/dashboard/historialVentas" class="btn btn-primaryt">Regresar</a>
+    </div>
+
+    <hr>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+
+        <div class="form-group row">
+            <div class="col-md-6 ">
+              <label for="title">Fecha:</label>
+              <input
+                formControlName="fecha"
+                [(ngModel)]="venta.fecha"
+                id="fecha"
+                type="date"
+                class="form-control">
+              <div *ngIf="f.fecha.touched && f.fecha.invalid" class="alert alert-danger">
+                  <div *ngIf="f.fecha.errors.required">*Fecha is required.</div>
+                 <!-- <div *ngIf="f.fecha.errors.pattern">*Must only contain letters.</div> -->
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-6 ">
+              <label for="almacen">Almacén:</label>
+              <input
+                formControlName="almacen"
+                [(ngModel)]="venta.almacen"
+                id="almacen"
+                type="text"
+                class="form-control">
+              <div *ngIf="f.almacen.touched && f.almacen.invalid" class="alert alert-danger">
+                  <div *ngIf="f.almacen.errors.required">*Almacén is required.</div>
+                 <!-- <div *ngIf="f.almacen.errors.email">*Must be a valid email address.</div> -->
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-6 ">
+              <label for="destino">Destino:</label>
+              <input
+                [(ngModel)]="venta.destino"
+                formControlName="destino"
+                id="destino"
+                type="text"
+                class="form-control">
+              <div *ngIf="f.destino.touched && f.destino.invalid" class="alert alert-danger">
+                  <div *ngIf="f.destino.errors.required">*Destino is required.</div>
+                 <!-- <div *ngIf="f.destino.errors.pattern">*Must only contain numbers.</div> -->
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-6 ">
+              <label for="notaventa">Nota venta:</label>
+              <input
+                [(ngModel)]="venta.notaventa"
+                formControlName="notaventa"
+                id="notaventa"
+                type="text"
+                class="form-control">
+              <div *ngIf="f.notaventa.touched && f.notaventa.invalid" class="alert alert-danger">
+                  <div *ngIf="f.notaventa.errors.required">*Nota de venta is required.</div>
+                 <!-- <div *ngIf="f.notaventa.errors.pattern">*Must only contain numbers.</div> -->
+              </div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Update</button>
+    </form>
+</div>

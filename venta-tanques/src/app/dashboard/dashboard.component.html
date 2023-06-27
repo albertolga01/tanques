@@ -1,0 +1,74 @@
+<mat-toolbar color="primary" class="example-toolbar" style="background-color: #0071ce;">
+    <button mat-icon-button (click)="isExpanded = !isExpanded"><mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name">Control Tanques</h1>
+  </mat-toolbar>
+  <mat-sidenav-container class="example-container" autosize>
+    <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+        <mat-nav-list>
+            <mat-list-item (click)="showSubmenuProducts = !showSubmenuProducts" class="parent">
+              <span class="full-width" *ngIf="isExpanded || isShowingProducts">Productos</span>
+              <mat-icon mat-list-icon>store</mat-icon>
+              <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenuProducts}" *ngIf="isExpanded || isShowingProducts">expand_more</mat-icon>
+            </mat-list-item>
+            <div class="submenu" [ngClass]="{'expanded' : showSubmenuProducts}" *ngIf="isShowingProducts || isExpanded">
+                  <a mat-list-item href="/dashboard/productos">Productos</a>
+                  <a mat-list-item href="/dashboard/nuevoProducto">Nuevo producto</a>
+            </div>
+        </mat-nav-list>
+  
+             
+      <mat-nav-list>
+        <mat-list-item (click)="showSubmenuCompras= !showSubmenuCompras" class="parent">
+          <span class="full-width" *ngIf="isExpanded || isShowing">Compras</span>
+          <mat-icon mat-list-icon>add</mat-icon>
+          <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenuCompras}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+        </mat-list-item>
+        <div class="submenu" [ngClass]="{'expanded' : showSubmenuCompras}" *ngIf="isShowing || isExpanded">
+              <a mat-list-item href="/dashboard/compras">Compras</a>
+              <a mat-list-item href="/dashboard/nuevaCompra">Nueva compra</a>
+        </div>
+        </mat-nav-list>
+      
+        <mat-nav-list>
+        <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+          <span class="full-width" *ngIf="isExpanded || isShowing">Ventas</span>
+          <mat-icon mat-list-icon>money</mat-icon>
+          <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+        </mat-list-item>
+        <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">
+          <a mat-list-item href="/dashboard/historialVentas">Ventas</a>
+          <a mat-list-item href="/dashboard/nuevaVenta">Nueva venta</a>
+        </div>
+      </mat-nav-list>
+
+
+ 
+    <mat-nav-list>
+        <mat-list-item (click)="showSubmenuInventario= !showSubmenuInventario" class="parent">
+          <span class="full-width" *ngIf="isExpanded || isShowing">Inventario</span>
+          <mat-icon mat-list-icon>polymer</mat-icon>
+          <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenuInventario}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+        </mat-list-item>
+        <div class="submenu" [ngClass]="{'expanded' : showSubmenuInventario}" *ngIf="isShowing || isExpanded">
+              <a mat-list-item href="/dashboard/inventario">Inventario</a> 
+        </div>
+    </mat-nav-list>
+
+    <mat-nav-list>
+        <mat-list-item (click)="showSubmenuUsuarios= !showSubmenuUsuarios" class="parent">
+          <span class="full-width" *ngIf="isExpanded || isShowing">Usuarios</span>
+          <mat-icon mat-list-icon>account_circle</mat-icon>
+          <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenuUsuarios}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+        </mat-list-item>
+        <div class="submenu" [ngClass]="{'expanded' : showSubmenuUsuarios}" *ngIf="isShowing || isExpanded">
+              <a mat-list-item href="/dashboard/usuarios">Usuarios</a> 
+        </div>
+    </mat-nav-list>
+
+    </mat-sidenav>
+  
+    <div class="example-sidenav-content" style="align-items: flex-start; margin-top: 35px;">
+      <router-outlet></router-outlet>
+    </div>
+  
+  </mat-sidenav-container>

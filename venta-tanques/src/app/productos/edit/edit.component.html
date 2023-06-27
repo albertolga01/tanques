@@ -1,0 +1,63 @@
+<div class="container" style="min-width:900px">
+  
+    <div class="d-flex justify-content-between">
+      <h1>Edit producto</h1>
+      <a href="#" routerLink="/dashboard/productos" class="btn btn-primaryt">Regresar</a>
+    </div>
+
+    <hr>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+
+        <div class="form-group row">
+            <div class="col-md-6 ">
+              <label for="title">Producto:</label>
+              <input
+                formControlName="producto"
+                [(ngModel)]="producto.producto"
+                id="producto"
+                type="text"
+                class="form-control">
+              <div *ngIf="f.producto.touched && f.producto.invalid" class="alert alert-danger">
+                  <div *ngIf="f.producto.errors.required">*Producto is required.</div>
+                  <!-- <div *ngIf="f.producto.errors.pattern">*The name must only contain letters.</div> -->
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-6 ">
+              <label for="capacidad">Capacidad:</label>
+              <input
+                formControlName="capacidad"
+                [(ngModel)]="producto.capacidad"
+                id="capacidad"
+                type="number"
+                class="form-control">
+              <div *ngIf="f.capacidad.touched && f.capacidad.invalid" class="alert alert-danger">
+                  <div *ngIf="f.capacidad.errors.required">*Capacidad is required.</div>
+                 <!-- <div *ngIf="f.capacidad.errors.email">*The email must be a valid email address.</div> -->
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-6 ">
+              <label for="descripcion">Descripción:</label>
+              <input
+                [(ngModel)]="producto.descripcion"
+                formControlName="descripcion"
+                id="descripcion"
+                type="text"
+                class="form-control">
+              <div *ngIf="f.descripcion.touched && f.descripcion.invalid" class="alert alert-danger">
+                  <div *ngIf="f.descripcion.errors.required">*Descripción is required.</div>
+                 <!-- <div *ngIf="f.descripcion.errors.pattern">*The phone must only contain numbers.</div> -->
+              </div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Update</button>
+    </form>
+</div>

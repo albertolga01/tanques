@@ -1,0 +1,111 @@
+<div style="min-width:900px">
+
+    <div class="d-flex justify-content-between">
+      <h1>Nueva compra</h1>
+      <a href="#" routerLink="/dashboard" class="btn btn-primaryt">Regresar</a>
+    </div>
+  
+    <hr/>
+  
+      <form [formGroup]="form" (ngSubmit)="submit()">
+  
+          <div class="form-group row">
+              <div class="col-md-6 ">
+                <label for="title">Producto:</label>
+                <select
+                  formControlName="producto"
+                  id="producto"
+                  type="text"
+                  class="form-control">
+                    <option *ngFor="let producto of productos" 
+                        [value]="producto.id"> 
+                        {{producto.producto}}
+                    </option>
+                  </select>
+                <div *ngIf="f.producto.touched && f.producto.invalid" class="alert alert-danger">
+                    <div *ngIf="f.producto.errors.required">*Producto is required.</div>
+                   <!-- <div *ngIf="f.producto.errors.pattern">*The name must only contain letters.</div> -->
+                </div>
+              </div>
+          </div>
+  
+          <div class="form-group row">
+              <div class="col-md-6 ">
+                <label for="fecha">Fecha:</label>
+                <input
+                  formControlName="fecha"
+                  id="fecha"
+                  type="date"
+                  class="form-control">
+                <div *ngIf="f.fecha.touched && f.fecha.invalid" class="alert alert-danger">
+                    <div *ngIf="f.fecha.errors.required">*Fecha is required.</div>
+                  <!-- <div *ngIf="f.fecha.errors.email">*The email must be a valid email address.</div> -->
+                </div>
+              </div>
+          </div>
+  
+          <div class="form-group row">
+              <div class="col-md-6 ">
+                <label for="lote">Lote:</label>
+                <input
+                  formControlName="lote"
+                  id="lote"
+                  type="text"
+                  class="form-control">
+                <div *ngIf="f.lote.touched && f.lote.invalid" class="alert alert-danger">
+                    <div *ngIf="f.lote.errors.required">*Lote is required.</div>
+                  <!-- <div *ngIf="f.lote.errors.pattern">*The phone must only contain numbers.</div> -->
+                </div>
+              </div>
+          </div>
+          
+          <div class="form-group row">
+            <div class="col-md-6 ">
+              <label for="cantidad">Cantidad:</label>
+              <input
+                formControlName="cantidad"
+                id="cantidad"
+                type="number"
+                class="form-control">
+              <div *ngIf="f.cantidad.touched && f.cantidad.invalid" class="alert alert-danger">
+                  <div *ngIf="f.cantidad.errors.required">*Cantidad is required.</div>
+                <!-- <div *ngIf="f.cantidad.errors.pattern">*The phone must only contain numbers.</div> -->
+              </div>
+            </div>
+        </div>
+
+        
+        <div class="form-group row">
+            <div class="col-md-6 ">
+              <label for="costounitario">Costo unitario:</label>
+              <input
+                formControlName="costounitario"
+                id="costounitario"
+                type="number"
+                class="form-control">
+              <div *ngIf="f.costounitario.touched && f.costounitario.invalid" class="alert alert-danger">
+                  <div *ngIf="f.costounitario.errors.required">*Costo unitario is required.</div>
+                <!-- <div *ngIf="f.costounitario.errors.pattern">*The phone must only contain numbers.</div> -->
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-6 ">
+              <label for="factura">Factura:</label>
+              <input
+                formControlName="factura"
+                id="factura"
+                type="number"
+                class="form-control">
+              <div *ngIf="f.factura.touched && f.factura.invalid" class="alert alert-danger">
+                  <div *ngIf="f.factura.errors.required">*Factura unitario is required.</div>
+                <!-- <div *ngIf="f.factura.errors.pattern">*The phone must only contain numbers.</div> -->
+              </div>
+            </div>
+        </div>
+  
+          <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+      </form>
+  </div>
+  

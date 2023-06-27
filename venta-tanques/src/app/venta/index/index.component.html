@@ -1,0 +1,67 @@
+<section style="min-width:900px">
+
+    <div class="d-flex justify-content-between">
+      <h1>Ventas</h1>
+      <a routerLink="/dashboard/venta/create" class="btn btn-success">Crear Venta</a>
+    </div>
+
+    <br>
+    
+    <table class="table ">
+      <tr>
+        <th>ID</th>
+        <th>Factura</th>
+        <th>Nombre</th>
+        <th>Fecha</th>
+        <th>Producto</th>
+        <th>Descripción</th>
+        <th>Almacén</th>
+        <th>Destino</th>
+        <th>Lote</th>
+        <th>Cantidad</th>
+        <th>Costo unitario</th>
+        <th>Subtotal</th>
+        <th>Tipo</th>
+        <th >Orden de venta</th>
+        <th >Orden de salida</th>
+        <th width="220px" hidden>Action</th>
+      </tr>
+      <tr *ngFor="let venta of ventas">
+        <td>{{ venta.id }}</td>
+        <td>{{ venta.factura }}</td>
+        <td>{{ venta.nombre }}</td>
+        <td>{{ venta.fecha }}</td>
+        <td>{{ venta.producto }}</td>
+        <td>{{ venta.descripcion }}</td>
+        <td>{{ venta.almacen }}</td>
+        <td>{{ venta.destino }}</td>
+        <td>{{ venta.lote }}</td>
+        <td>{{ venta.cantidad }}</td>
+        <td>{{ venta.costounitario }}</td>
+        <td>{{ venta.costounitario * venta.cantidad }}</td>
+        <td>{{ venta.tipo }}</td>
+        <td>
+            <div *ngIf="venta.ordenesventa > 0">
+                <a href="#" [routerLink]="['/dashboard/ordenVenta/', 'venta', venta.id  ]" class="btn btn-primary">Ver</a>
+            </div>
+            <div *ngIf="venta.ordenesventa < 1">
+                <a href="#" [routerLink]="['/dashboard/createOrdenVenta/', 'venta', venta.id  ]" class="btn btn-primary">Crear</a>
+
+            </div>
+            
+        </td>
+        <td>
+            <div *ngIf="venta.ordenesventa > 0">
+                <a href="#" [routerLink]="['/dashboard/ordenSalida/', 'salida', venta.id  ]" class="btn btn-primary">Ver</a>
+            </div>
+            <div *ngIf="venta.ordenesventa < 1">
+                <a href="#" [routerLink]="['/dashboard/createOrdenSalida/', 'salida', venta.id  ]" class="btn btn-primary">Crear</a>
+            </div>
+        </td>
+        <td hidden>
+          <a href="#" [routerLink]="['/dashboard/venta/', 'edit', venta.id  ]" class="btn btn-primary">Edit</a>
+          <button type="button" (click)="deleteVenta(venta.id)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </table>
+ </section>

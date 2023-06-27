@@ -1,0 +1,89 @@
+<div style="min-width:900px">
+
+    <div class="d-flex justify-content-between">
+      <h1>Nueva orden de venta</h1>
+      <a href="#" routerLink="/dashboard" class="btn btn-primaryt">Regresar</a>
+    </div>
+  
+    <hr/>
+  <br> 
+      <form [formGroup]="form" (ngSubmit)="submit()">
+                <div class="form-group row">
+                    <div class="col-md-10 ">
+                    <label for="title">Folio venta:</label>
+                    <input
+                        formControlName="idventa"
+                        name="idventa"
+                        id="idventa"
+                        type="text"
+                        class="form-control" 
+                        [(ngModel)]="this.id"
+                        disabled/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-10 ">
+                        <label for="fecha">Fecha:</label>
+                        <input
+                        formControlName="fecha"
+                        name="fecha"
+                        id="fecha"
+                        type="date"
+                        class="form-control">
+                        <div *ngIf="f.fecha.touched && f.fecha.invalid" class="alert alert-danger">
+                            <div *ngIf="f.fecha.errors.required">*Fecha is required.</div>
+                            <!-- <div *ngIf="f.fecha.errors.pattern">*Must only contain letters.</div> -->
+                        </div>
+                    </div>
+                </div>
+             
+
+            
+    
+            <div class="form-group row" >
+                <div class="col-md-10 ">
+                <label for="solicita">Solicita:</label>
+                <select
+                formControlName="solicita"
+                id="solicita"
+                type="text"
+                class="form-control">
+                  <option *ngFor="let usuario of usuarios" 
+                      [value]="usuario.id"> 
+                      {{usuario.name}}
+                  </option>
+                </select>
+                <div *ngIf="f.solicita.touched && f.solicita.invalid" class="alert alert-danger">
+                    <div *ngIf="f.solicita.errors.required">*Solicita de venta is required.</div>
+                      <div *ngIf="f.solicita.errors.pattern">*Must only contain numbers.</div> 
+                </div> 
+                </div>
+            </div>
+
+             <div class="form-group row" >
+                <div class="col-md-10 ">
+                <label for="autoriza">Autoriza:</label>
+                <select
+                formControlName="autoriza"
+                id="autoriza"
+                type="text"
+                class="form-control">
+                  <option *ngFor="let usuario of usuarios" 
+                      [value]="usuario.id"> 
+                      {{usuario.name}}
+                  </option>
+                </select>
+               <div *ngIf="f.autoriza.touched && f.autoriza.invalid" class="alert alert-danger">
+                    <div *ngIf="f.autoriza.errors.required">*Autoriza is required.</div>
+                     <div *ngIf="f.autoriza.errors.pattern">*Must only contain numbers.</div> 
+                </div>
+                </div>
+            </div>
+
+
+                
+  
+          <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Guardar</button>
+      </form>
+  </div>

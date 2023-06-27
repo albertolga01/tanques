@@ -1,0 +1,354 @@
+<div style="min-width:900px">
+
+    <div class="d-flex justify-content-between">
+      <h1>Nueva venta</h1>
+      <a href="#" routerLink="/dashboard" class="btn btn-primaryt">Regresar</a>
+    </div>
+  
+    <hr/>
+  <br> 
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <div style="display: flex; width: 100%;">
+            <div style="width: 50%">
+                <!-- OnChange obtener stock de la venta -->
+                <div class="form-group row">
+                    <div class="col-md-10 ">
+                    <label for="compra">Compra:</label>
+                    <select
+                    formControlName="compra"
+                    id="compra"
+                    type="text"
+                    class="form-control"
+                    (ngModelChange)="cantidadDisponible($event)"
+                    >  
+                        <option *ngFor="let compra of compras" 
+                            [value]="compra.id"> 
+                            {{compra.lote}} ({{compra.producto}}) 
+                        </option>
+                    </select>
+                    <div *ngIf="f.compra.touched && f.compra.invalid" class="alert alert-danger">
+                        <div *ngIf="f.compra.errors.required">*Compra is required.</div>
+                        <!-- <div *ngIf="f.compra.errors.pattern">*Must only contain letters.</div> -->
+                    </div>
+                    </div>
+                </div>
+
+                <div class="form-group row" hidden>
+                    <div class="col-md-10 ">
+                    <label for="title">Id Producto:</label>
+                    <input
+                    formControlName="idproducto"
+                    id="idproducto"
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="this.idproducto">
+                   
+                    <div *ngIf="f.idproducto.touched && f.idproducto.invalid" class="alert alert-danger">
+                        <div *ngIf="f.idproducto.errors.required">*Producto is required.</div>
+                        <!-- <div *ngIf="f.idproducto.errors.pattern">*Must only contain letters.</div> -->
+                    </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-10 ">
+                    <label for="title">Producto:</label>
+                    <input
+                    formControlName="producto"
+                    id="producto"
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="this.producto"
+                    disabled
+                    >
+                    <div *ngIf="f.producto.touched && f.producto.invalid" class="alert alert-danger">
+                        <div *ngIf="f.producto.errors.required">*Producto is required.</div>
+                        <!-- <div *ngIf="f.producto.errors.pattern">*Must only contain letters.</div> -->
+                    </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-10 ">
+                    <label for="nombre">Nombre:</label>
+                    <input
+                        formControlName="nombre"
+                        name="nombre"
+                        id="nombre"
+                        type="text"
+                        class="form-control">
+                    <div *ngIf="f.nombre.touched && f.nombre.invalid" class="alert alert-danger">
+                        <div *ngIf="f.nombre.errors.required">*Nombre is required.</div>
+                        <!-- <div *ngIf="f.fecha.errors.pattern">*Must only contain letters.</div> -->
+                    </div>
+                    </div>
+                </div>
+                
+
+                <div class="form-group row">
+                    <div class="col-md-10 ">
+                    <label for="cantidad">Cantidad:</label>
+                    <input
+                        formControlName="cantidad"
+                        name="cantidad"
+                        id="cantidad"
+                        type="number"
+                        class="form-control">
+                    <div *ngIf="f.cantidad.touched && f.cantidad.invalid" class="alert alert-danger">
+                        <div *ngIf="f.cantidad.errors.required">*Cantidad is required.</div>
+                        <!-- <div *ngIf="f.cantidad.errors.pattern">*Must only contain letters.</div> -->
+                    </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-10 ">
+                    <label for="costounitario">Costo unitario:</label>
+                    <input
+                        formControlName="costounitario"
+                        name="costounitario"
+                        id="costounitario"
+                        type="text"
+                        class="form-control">
+                    <div *ngIf="f.costounitario.touched && f.costounitario.invalid" class="alert alert-danger">
+                        <div *ngIf="f.costounitario.errors.required">*Costo unitario is required.</div>
+                        <!-- <div *ngIf="f.costounitario.errors.pattern">*Must only contain letters.</div> -->
+                    </div>
+                    </div>
+                </div>
+                
+            <div class="form-group row">
+                <div class="col-md-10 ">
+                    <label for="fecha">Fecha:</label>
+                    <input
+                    formControlName="fecha"
+                    name="fecha"
+                    id="fecha"
+                    type="date"
+                    class="form-control">
+                    <div *ngIf="f.fecha.touched && f.fecha.invalid" class="alert alert-danger">
+                        <div *ngIf="f.fecha.errors.required">*Fecha is required.</div>
+                        <!-- <div *ngIf="f.fecha.errors.pattern">*Must only contain letters.</div> -->
+                    </div>
+                </div>
+            </div>
+
+            </div>
+            <div style="width: 50%">
+            <div class="form-group row">
+                <div class="col-md-10 ">
+                    <label for="almacen">Almacén:</label>
+                    <input
+                    formControlName="almacen"
+                    id="almacen"
+                    name="almacen"
+                    type="text"
+                    class="form-control">
+                    <div *ngIf="f.almacen.touched && f.almacen.invalid" class="alert alert-danger">
+                        <div *ngIf="f.almacen.errors.required">*Almacén is required.</div>
+                    <!-- <div *ngIf="f.almacen.errors.pattern">*Must only contain letters.</div> -->
+                    </div>
+                </div>
+            </div>
+    
+            <div class="form-group row">
+                <div class="col-md-10 ">
+                    <label for="destino">Destino:</label>
+                    <input
+                    formControlName="destino"
+                    id="destino"
+                    type="text"
+                    class="form-control">
+                    <div *ngIf="f.destino.touched && f.destino.invalid" class="alert alert-danger">
+                        <div *ngIf="f.destino.errors.required">*Destino is required.</div>
+                        <!-- <div *ngIf="f.destino.errors.pattern">*Must only contain letters.</div> -->
+                    </div>
+                </div>
+            </div>
+<!--
+            <div class="form-group row" hidden>
+                <div class="col-md-10 ">
+                <label for="notaventa">Nota de venta:</label>
+                <input
+                    formControlName="notaventa"
+                    id="notaventa"
+                    type="text"
+                    class="form-control">
+                 <div *ngIf="f.notaventa.touched && f.notaventa.invalid" class="alert alert-danger">
+                    <div *ngIf="f.notaventa.errors.required">*Nota de venta is required.</div>
+                     <div *ngIf="f.notaventa.errors.pattern">*Must only contain numbers.</div> 
+                </div>
+                </div>
+            </div>-->
+
+            <div class="form-group row">
+                <div class="col-md-10 ">
+                <label for="tipo">Tipo:</label>
+                <select
+                    formControlName="tipo"
+                    id="tipo"
+                    type="text"
+                    class="form-control">
+                    <option value="venta">Venta</option>
+                    <option value="comodato">Comodato</option>
+                    </select>
+                <div *ngIf="f.tipo.touched && f.tipo.invalid" class="alert alert-danger">
+                    <div *ngIf="f.tipo.errors.required">*Tipo de venta is required.</div>
+                    <!--  <div *ngIf="f.tipo.errors.pattern">*Must only contain numbers.</div> -->
+                </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-10 ">
+                <label for="clientecolaborador">Cliente / colaborador:</label>
+                <select
+                    formControlName="clientecolaborador"
+                    id="clientecolaborador"
+                    type="text"
+                    class="form-control">
+                    <option value="cliente">Cliente</option>
+                    <option value="colaborador">Colaborador</option>
+                    </select>
+                <div *ngIf="f.clientecolaborador.touched && f.clientecolaborador.invalid" class="alert alert-danger">
+                    <div *ngIf="f.clientecolaborador.errors.required">*Cliente / colaborador de venta is required.</div>
+                    <!-- <div *ngIf="f.clientecolaborador.errors.pattern">*Must only contain numbers.</div> -->
+                </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-10 ">
+                <label for="factura">Factura:</label>
+                <input
+                        formControlName="factura"
+                        name="factura"
+                        id="factura"
+                        type="text"
+                        class="form-control">
+                <div *ngIf="f.factura.touched && f.factura.invalid" class="alert alert-danger">
+                    <!--  <div *ngIf="f.factura.errors.required">*Factura de venta is required.</div>
+                    <div *ngIf="f.factura.errors.pattern">*Must only contain numbers.</div> -->
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <div style="width: 50%">
+                <div class="form-group row">
+                    <div class="col-md-10 ">
+                        <label for="datosfacturacion">Datos de facturación:</label>
+                        <input
+                        formControlName="datosfacturacion"
+                        id="datosfacturacion"
+                        name="datosfacturacion"
+                        type="text"
+                        class="form-control">
+                        <div *ngIf="f.datosfacturacion.touched && f.datosfacturacion.invalid" class="alert alert-danger">
+                            <div *ngIf="f.datosfacturacion.errors.required">*Datos de facturación is required.</div>
+                        <!-- <div *ngIf="f.datosfacturacion.errors.pattern">*Must only contain letters.</div> -->
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="form-group row">
+                    <div class="col-md-10 ">
+                        <label for="observaciones">Obervaciones:</label>
+                        <input
+                        formControlName="observaciones"
+                        id="observaciones"
+                        type="text"
+                        class="form-control">
+                        <div *ngIf="f.observaciones.touched && f.observaciones.invalid" class="alert alert-danger">
+                            <div *ngIf="f.observaciones.errors.required">*Obervaciones is required.</div>
+                            <!-- <div *ngIf="f.observaciones.errors.pattern">*Must only contain letters.</div> -->
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="form-group row">
+                    <div class="col-md-10 ">
+                    <label for="departamento">Departamento:</label>
+                    <select
+                    formControlName="departamento"
+                    id="departamento"
+                    type="text"
+                    class="form-control">
+                    <option value="1">RRHH</option>
+                    <option value="2">Ventas</option>
+                    </select>
+                    <div *ngIf="f.departamento.touched && f.departamento.invalid" class="alert alert-danger">
+                        <div *ngIf="f.departamento.errors.required">*Departamento de venta is required.</div>
+                        <!--  <div *ngIf="f.departamento.errors.pattern">*Must only contain numbers.</div> -->
+                    </div>
+                    </div>
+                </div>
+    <!--
+                <div class="form-group row" hidden>
+                    <div class="col-md-10 ">
+                    <label for="solicita">Solicita:</label>
+                    <input
+                    formControlName="solicita"
+                    id="solicita"
+                    type="text"
+                    class="form-control">
+                    <div *ngIf="f.solicita.touched && f.solicita.invalid" class="alert alert-danger">
+                        <div *ngIf="f.solicita.errors.required">*Solicita de venta is required.</div>
+                          <div *ngIf="f.solicita.errors.pattern">*Must only contain numbers.</div> 
+                    </div> 
+                    </div>
+                </div>
+    
+                 <div class="form-group row" hidden>
+                    <div class="col-md-10 ">
+                    <label for="autoriza">Autoriza:</label>
+                    <input
+                    formControlName="autoriza"
+                    id="autoriza"
+                    type="text"
+                    class="form-control">
+                   <div *ngIf="f.autoriza.touched && f.autoriza.invalid" class="alert alert-danger">
+                        <div *ngIf="f.autoriza.errors.required">*Autoriza is required.</div>
+                         <div *ngIf="f.autoriza.errors.pattern">*Must only contain numbers.</div> 
+                    </div>
+                    </div>
+                </div>
+    -->
+                <div class="form-group row">
+                    <div class="col-md-10 ">
+                    <label for="formapago">Forma de pago:</label>
+                    <select
+                    formControlName="formapago"
+                    id="formapago"
+                    type="text"
+                    class="form-control">
+                    <option value="1">Contado</option>
+                    <option value="2">Crédito</option>
+                    </select>
+                    <div *ngIf="f.formapago.touched && f.formapago.invalid" class="alert alert-danger">
+                         <div *ngIf="f.formapago.errors.required">*Forma de pago de venta is required.</div>
+                      <!--   <div *ngIf="f.formapago.errors.pattern">*Must only contain numbers.</div> -->
+                    </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-10 ">
+                    <label for="plazo">Plazo:</label>
+                    <input
+                    formControlName="plazo"
+                    id="plazo"
+                    type="text"
+                    class="form-control">
+                    <!-- <div *ngIf="f.plazo.touched && f.plazo.invalid" class="alert alert-danger">
+                       <div *ngIf="f.plazo.errors.required">*Plazo is required.</div>
+                         <div *ngIf="f.plazo.errors.pattern">*Must only contain numbers.</div> 
+                    </div>-->
+                    </div>
+                </div>
+    
+                </div>
+        </div>
+  
+          <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Guardar</button>
+      </form>
+  </div>

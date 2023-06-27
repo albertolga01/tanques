@@ -1,0 +1,29 @@
+<section style="min-width:900px">
+
+    <div class="d-flex justify-content-between">
+      <h1>Productos</h1>
+      <a routerLink="/dashboard/productos/create" class="btn btn-success">Crear Producto</a>
+    </div>
+
+    <br>
+    
+    <table class="table ">
+      <tr>
+        <th>ID</th>
+        <th>Producto</th>
+        <th>Capacidad</th>
+        <th>Descripción</th>
+        <th width="220px">Action</th>
+      </tr>
+      <tr *ngFor="let producto of productos">
+        <td>{{ producto.id }}</td>
+        <td>{{ producto.producto }}</td>
+        <td>{{ producto.capacidad }}</td>
+        <td>{{ producto.descripcion }}</td>
+        <td>
+          <a href="#" [routerLink]="['/dashboard/productos/', 'edit', producto.id  ]" class="btn btn-primary">Edit</a>
+          <button type="button" (click)="deleteProducto(producto.id)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </table>
+ </section>

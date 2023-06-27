@@ -1,0 +1,39 @@
+<section style="min-width:900px">
+
+    <div class="d-flex justify-content-between">
+      <h1>Compras</h1>
+      <a routerLink="/dashboard/compras/create" class="btn btn-success">Crear Compra</a>
+    </div>
+
+    <br>
+    
+    <table class="table ">
+      <tr>
+        <th>ID</th>
+        <th>Factura</th>
+        <th>Fecha</th>
+        <th>Código producto</th>
+        <th>Descripción</th>
+        <th>Lote</th>
+        <th>Cantidad</th>
+        <th>Costo unitario</th>
+        <th>Subtotal</th>
+        <th width="220px">Action</th>
+      </tr>
+      <tr *ngFor="let compra of compras">
+        <td>{{ compra.id }}</td>
+        <td>{{ compra.factura }}</td>
+        <td>{{ compra.fecha }}</td>
+        <td>{{ compra.producto }}</td>
+        <td>{{ compra.descripcion }}</td>
+        <td>{{ compra.lote }}</td>
+        <td>{{ compra.cantidad }}</td>
+        <td>{{ compra.costounitario }}</td>
+        <td>{{ compra.costounitario * compra.cantidad }}</td>
+        <td>
+          <a href="#" [routerLink]="['/dashboard/compras/', 'edit', compra.id  ]" class="btn btn-primary">Edit</a>
+          <button type="button" (click)="deleteCompra(compra.id)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </table>
+ </section>

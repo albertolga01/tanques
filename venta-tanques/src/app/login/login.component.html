@@ -1,0 +1,47 @@
+<div style="min-width:900px" align="center">
+    <form [formGroup]="form"  class="form"  (ngSubmit)="submit()" >
+        <div class="col-md-6">
+        <mat-toolbar color="primary" class="example-toolbar" style="background-color: #0071ce; border-radius: 5px;">
+            <h1 class="example-app-name">Iniciar Sesión</h1>
+        </mat-toolbar>
+    </div>
+    <div class="form-group" style="margin-top: 10px;">
+        <div class="col-md-6 ">
+          <div class="row" style="margin-left: 0px;">
+            <label for="password">Usuario:</label>
+          </div>
+          <input
+            formControlName="user"
+            name="user"
+            id="user"
+            type="text"
+            class="form-control">
+         <div *ngIf="f.user.touched && f.user.invalid" class="alert alert-danger">
+              <div *ngIf="f.user.errors.required">*Usuario is required.</div>
+              <!--  <div *ngIf="f.fecha.errors.pattern">*Must only contain letters.</div> -->
+          </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6 ">
+            <div class="row" style="margin-left: 0px;">
+                 <label for="password">Contraseña:</label>
+            </div>
+          <input
+            formControlName="password"
+            id="password"
+            name="password"
+            type="text"
+            class="form-control">
+        <div *ngIf="f.password.touched && f.password.invalid" class="alert alert-danger">
+              <div *ngIf="f.password.errors.required">*Contraseña is required.</div>
+             <!--   <div *ngIf="f.almacen.errors.pattern">*Must only contain letters.</div> -->
+          </div>
+        </div>
+    </div>
+ 
+        <button class="btn btn-primary" style="background-color: #0071ce;"   type="submit" [disabled]="!form.valid">Iniciar sesión</button>
+    </form>
+    
+</div>

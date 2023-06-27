@@ -1,0 +1,39 @@
+<section style="min-width:900px">
+
+    <div class="d-flex justify-content-between">
+      <h1>Inventario</h1>
+    </div>
+
+    <br>
+    
+    <table class="table "> 
+
+      <tr>
+        <th>ID</th>
+        <th>Producto</th>
+        <th>Descripción</th>
+        <th>Lote</th>
+        <th>Entradas totales</th>
+        <th>Salidas totales</th>
+        <th>Stock</th>
+        <th>Costo unitario</th>
+        <th>Importe inventario</th>
+        <th width="220px">Action</th>
+      </tr>
+      <tr *ngFor="let inventario of inventario">
+        <td>{{ inventario.id }}</td>
+        <td>{{ inventario.producto }}</td>
+        <td>{{ inventario.descripcion }}</td>
+        <td>{{ inventario.lote }}</td>
+        <td>{{ inventario.cantidad }}</td>
+        <td>{{ inventario.vendido }}</td>
+        <td>{{ inventario.cantidad - inventario.vendido }}</td>
+        <td>{{ inventario.costounitario }}</td>
+        <td>{{ inventario.vendido * inventario.costounitario }}</td>
+        <td>
+          <a href="#" [routerLink]="['/dashboard/inventario/', 'edit', inventario.id  ]" class="btn btn-primary">Edit</a>
+          <button type="button" (click)="deleteInventario(inventario.id)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </table>
+ </section>

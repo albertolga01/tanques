@@ -1,0 +1,27 @@
+<section style="min-width:900px">
+
+    <div class="d-flex justify-content-between">
+      <h1>Productos</h1>
+      <a routerLink="/dashboard/usuarios/create" class="btn btn-success">Crear Usuario</a>
+    </div>
+
+    <br>
+    
+    <table class="table ">
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th width="220px">Action</th>
+      </tr>
+      <tr *ngFor="let usuario of usuarios">
+        <td>{{ usuario.id }}</td>
+        <td>{{ usuario.name }}</td>
+        <td>{{ usuario.email }}</td>
+        <td>
+          <a href="#" [routerLink]="['/dashboard/usuarios/', 'edit', usuario.id  ]" class="btn btn-primary">Edit</a>
+          <button type="button" (click)="deleteUsuario(usuario.id)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </table>
+ </section>

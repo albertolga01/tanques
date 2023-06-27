@@ -1,0 +1,183 @@
+<body style="margin-left: 20px;margin-right: 20px;" >
+ <div #screen>
+    <div id="header">
+        <div id="imagen" align="center">
+            <img  src="assets/logopetromar.jpg" alt="LOGO" style="width:70%">
+        </div>
+
+        <div id="titulo">
+            <h1>  GAS UNION DE AMERICA, SA DE CV</h1>
+            <h2>  NOTA DE VENTA DE TANQUE DE GAS</h2>
+            <h3>  CLIENTE Y PUBLICO EN GENERAL</h3>
+        </div>
+
+        <div id="folio">
+
+            <div id="content-folio">
+                <div id="text-titulos">FOLIO</div>
+                <div style="text-align: center;color:red;" id="folio-orden"></div>
+            </div>
+
+            <div id="content-fecha">
+                <div id="text-titulos">FECHA</div>
+                <div id="fecha"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="content-body">
+        <div id="content-info">
+            <div id="content-cliente">
+                <div id="text-titulos">CLIENTE:</div>
+                <div id="nombre"></div>
+            </div>
+
+            <div id="content-destino">
+                <div id="text-titulos">DESTINO:</div>
+                <div id="cliente-colaborador"></div>
+            </div>               
+        </div>
+
+    </div>
+
+    <div id="content-table" style="margin-top: 30px;">
+        <table class="table table-bordered">
+            <thead>
+              <tr style="background-color: #D9D9D9;">
+                <th scope="col">CANTIDAD</th>
+                <th scope="col">UNIDAD</th>
+                <th scope="col">CONCEPTO</th>
+                <th scope="col" style="width: 10%;">COSTO  UNITARIO</th>
+                <th scope="col">TOTAL</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="cantidad"></td>
+                    <td id="unidad"></td>
+                    <td id="concepto"></td>
+                    <td id="costounitario"></td>
+                    <td id="total"></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+
+                  <tr style="background-color: #D9D9D9;">
+                    <th scope="col" colspan="3">FACTURAR A:</th>
+                    <th scope="col">IMPORTE</th>
+                    <th scope="col" id="subtotal"></th> 
+                  </tr> 
+                  <tr>
+                        <td id="datosfacturacion" colspan="3" rowspan="3"></td>
+                        <td>IVA</td>
+                        <td id="iva"></td> 
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td> 
+                  </tr>
+                  <tr>
+                    <td >Total</td>
+                    <td id="total-final"></td> 
+                  </tr>
+            </tbody>
+          </table>
+    </div>
+ 
+    
+    <div id="content-body">
+        <div id="content-info">
+            <div id="content-formaPago" style="width: 33.3%;">
+                <div id="text-titulos">FORMA DE PAGO:</div>
+                <div id="formapago"></div>
+            </div>
+            <div id="content-plazo" style="width: 33.3%;">
+                <div id="text-titulos">PLAZO:</div>
+                <div id="plazo"></div>
+            </div>   
+            
+            <div style="width: 33.3%; text-align: center;font-weight: 700;" align="center">
+                <div style="margin-top:30px;">___________________________</div>
+                <div style="width:100%">RECIBIO</div>
+           </div> 
+        </div>
+    </div>
+
+    <div id="content-body">
+        <div id="content-info">
+            <div id="content-formaPago" style="width: 100%;">
+                <div id="text-titulos">OBSERVACIONES:</div>
+                <div id="observaciones"></div>
+            </div> 
+        </div>
+    </div>
+
+
+    
+    <div  id="content-info" style="margin-top: 30px; height: 200px;">
+        <div style="width: 33%;border-right: 1px solid black ;text-align: center;font-weight: 700;">
+             <img id="firmasolicita" style="width: 100px; height: 100px;"/>
+             <div style="margin-top:30px;">___________________________</div>
+             <div id="solicita"></div>
+             <div class="btn btn-primary" id="bttnFirmaSolicita" class="bttnFirmar" (click)="firmarSolicitaOrdenVenta(this.idOrdenVenta)">Firmar</div>
+        </div> 
+        <div style="width: 33%;border-right: 1px solid black ;text-align: center;font-weight: 700;">
+            <img id="firmaautoriza" style="width: 100px; height: 100px;"/> 
+            <div style="margin-top:30px;">___________________________</div>
+             <div id="autoriza"></div>
+             <div class="btn btn-primary" id="bttnFirmaAutoriza" class="bttnFirmar" (click)="firmarAutorizaOrdenVenta(this.idOrdenVenta)">Firmar</div>
+        </div> 
+        <div style="width: 33%;text-align: center;font-weight: 700;">
+            <img id="firmarecibe" style="width: 100px; height: 100px;"/>
+             <div style="margin-top:30px;">___________________________</div>
+             <div id="firma-cliente"></div>
+             <div class="btn btn-primary" id="bttnFirmaRecibe" class="bttnFirmar" hidden>Firmar</div>
+        </div> 
+     </div>
+ </div>
+      <br>
+      <br>
+       <div class="btn btn-primary" (click)="downloadImage()">PDF</div>
+      <br>
+      <br>
+</body>

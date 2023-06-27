@@ -1,0 +1,155 @@
+<body style="margin-left: 20px;margin-right: 20px;">
+ <div #screen>
+    <div id="header">
+        <div id="imagen">
+            <img src="assets/logopetromar.jpg" alt="LOGO" style="width:70%">
+        </div>
+
+        <div id="titulo">
+            <h1>  GAS UNION DE AMERICA, SA DE CV</h1>
+            <h2>  ORDEN DE SALIDA DE TANQUE ESTACIONARIO</h2>
+        </div>
+
+        <div id="folio">
+
+            <div id="content-folio">
+                <div id="text-titulos">FOLIO</div>
+                <div style="text-align: center;color:red;" id="folio-orden"></div>
+            </div>
+
+            <div id="content-fecha">
+                <div id="text-titulos">FECHA</div>
+                <div id="fecha"></div>
+            </div>
+        </div>
+    </div>
+    <br>  
+    <div id="content-body">
+
+        <div id="content-info">
+            <div id="content-almacen">
+                <div id="text-titulos">ALMACEN:</div>
+                <div id="almacen"></div>
+            </div>
+
+            <div id="content-destino">
+                <div id="text-titulos">DESTINO:</div>
+                <div id="destino"></div>
+            </div>
+            <div id="content-nota">
+                <div id="text-titulos"># NOTA VTA</div>
+                <div id="notaventa"></div>
+            </div>
+        </div>
+
+        <div id="content-table">
+            <table class="table table-bordered">
+                <thead>
+                  <tr style="background-color: #D9D9D9;">
+                    <th scope="col">CANTIDAD</th>
+                    <th scope="col">UNIDAD</th>
+                    <th scope="col">CONCEPTO</th>
+                    <th scope="col">LOTE</th>
+                    <th scope="col">SERIE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td id="cantidad"></td>
+                    <td id="unidad"></td>
+                    <td id="concepto"></td>
+                    <td id="lote"></td>
+                    <td id="serie"></td>
+                  </tr> 
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr> 
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr> 
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr> 
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr> 
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr> 
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr> 
+                </tbody>
+              </table>
+        </div>
+        <br>
+        <div id="content-body">
+            <div id="content-info">
+                <div id="content-formaPago" style="width: 100%;">
+                    <div id="text-titulos">OBSERVACIONES:</div>
+                    <div id="observaciones"></div>
+                </div> 
+            </div>
+        </div>
+        <br>  
+        <div id="content-body">
+            <div id="content-info">
+                <div id="content-formaPago" style="width: 100%;">
+                    <div id="text-titulos"><div id="clienteocolaborador"></div></div>
+                    <div id="cliente"></div>
+                </div> 
+            </div>
+        </div>
+
+        <div  id="content-info" style="margin-top: 30px; height: 200px;">
+            <div style="width: 33%;border-right: 1px solid black ;text-align: center;font-weight: 700;">
+                <img id="firmasolicita" style="width: 100px; height: 100px;"/> 
+                <div style="margin-top:30px;">___________________________</div>
+                 <div id="solicita"> <br> SOLICITÓ</div>
+                 <div class="btn btn-primary" id="bttnFirmaSolicita" (click)="firmarSolicitaOrdenSalida(this.idOrdenSalida)">Firmar</div>
+            </div> 
+            <div style="width: 33%;border-right: 1px solid black ;text-align: center;font-weight: 700;">
+                <img id="firmaautoriza" style="width: 100px; height: 100px;"/> 
+                <div style="margin-top:30px;">___________________________</div>
+                 <div id="autoriza"> <br>  AUTORIZA</div>
+                 <div class="btn btn-primary" id="bttnFirmaAutoriza" (click)="firmarAutorizaOrdenSalida(this.idOrdenSalida)">Firmar</div>
+            </div> 
+            <div style="width: 33%;text-align: center;font-weight: 700;">
+                <img id="firmarecibe" style="width: 100px; height: 100px;"/> 
+                <div style="margin-top:30px;">___________________________</div>
+                 <div id="firma-cliente"></div>
+                 <div class="btn btn-primary" id="bttnFirmaRecibe" hidden>Firmar</div>
+            </div> 
+         </div>
+
+    </div>
+</div>
+    <br>
+       <div class="btn btn-primary" (click)="downloadImage()">PDF</div>
+      <br>
+      <br>
+</body>
